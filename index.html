@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Seattle,WA&appid=f076b6494b83483977d6ccfa8f3c4a96", false);
+        xhr.send();
+
+        var response = JSON.parse(xhr.response);
+
+        console.log(`
+            The weather for ${response.name} is ${response.weather.description}. The current humidity is ${response.main.humidity}% and the pressure is ${response.main.pressure} hPA. The current temperature is ${response.main.temp - 273.16}. Today the temperature will reach a high of ${response.main.temp_max - 273.16} celcius and a low of ${response.main.temp_min - 273.16} celcius.
+            `);
+    </script>
+</head>
+<body>
+    <div id="content-container">
+
+    </div>
+</body>
+</html>
